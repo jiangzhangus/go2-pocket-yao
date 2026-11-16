@@ -16,7 +16,11 @@
   --pocket-accent:#1d4d53; --pocket-on-accent:#ffffff; --pocket-danger:#b72e30;
   --pocket-danger-soft:#fff0ed; --pocket-shadow:0 12px 35px #17383c0a;
   --tab-space:calc(88px + env(safe-area-inset-bottom));
+  --pocket-viewport-height:100vh;
   font-synthesis:none; font-size:18px; -webkit-text-size-adjust:100%;
+}
+@supports (height:100dvh) {
+  :root {--pocket-viewport-height:100dvh}
 }
 html[data-theme=dark] {
   --pocket-bg:#12232b; --pocket-surface:#1c333c; --pocket-soft:#28434c;
@@ -26,7 +30,7 @@ html[data-theme=dark] {
 }
 html,body {height:100%;overscroll-behavior:none}
 body {background:var(--pocket-bg)!important;color:var(--pocket-ink);touch-action:pan-y pinch-zoom;-webkit-font-smoothing:antialiased}
-#app {height:calc(100dvh - var(--tab-space));width:100%;padding-top:env(safe-area-inset-top)}
+#app {height:calc(var(--pocket-viewport-height) - var(--tab-space));width:100%;padding-top:env(safe-area-inset-top)}
 .app-root {height:100%;width:100%;min-width:0!important;background:var(--pocket-bg)!important;color:var(--pocket-ink)!important}
 .app-root.landing-screen,.app-root.hub-screen,.tools-screen {display:block;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .app-root::before {display:none!important}
@@ -84,7 +88,7 @@ html body :is(.page-content,.connection-panel) :is([style*="background:#0"],[sty
 .connection-screen {overflow:auto!important;padding:30px 22px!important;align-items:flex-start!important}.connection-modal {width:min(100%,480px);padding:28px;border-radius:24px;margin:0 auto;background:var(--pocket-surface)!important;border:1px solid var(--pocket-line)!important;box-shadow:var(--pocket-shadow)!important;color:var(--pocket-ink)!important}.conn-title {color:var(--pocket-ink)!important;font-size:30px!important;text-align:left!important}.connection-panel label {color:var(--pocket-muted)!important;font-size:18px}.form-group {margin-top:22px;margin-bottom:22px}.conn-back-link {min-height:52px;font-size:18px!important;color:var(--pocket-accent)!important}.ip-row {flex-wrap:wrap;gap:10px}.ip-row input {flex:1;min-width:170px!important}.cloud-prefs-row {gap:14px}.cloud-prefs-label {font-size:16px!important;color:var(--pocket-muted)!important}.cloud-prefs-pill {min-height:52px;font-size:18px!important}.cloud-prefs-group {flex-wrap:wrap}.settings-toggle {min-width:58px;min-height:36px}.settings-category {margin-bottom:30px}.settings-section {margin-bottom:14px;gap:20px}.settings-text {min-width:0}.settings-slider {min-height:48px}.settings-drawer-panel {width:min(100%,520px);padding-bottom:env(safe-area-inset-bottom)}.settings-drawer-overlay {z-index:10020}.settings-drawer-close {min-width:56px;min-height:56px;background:var(--pocket-soft)!important;color:var(--pocket-ink)!important;border-radius:16px}.settings-drawer-body {padding:20px}.settings-drawer-body .settings-page {overflow:visible!important}
 .aud-list {max-height:420px}.aud-record-btn,.aud-upload-btn,.aud-loop-btn {min-width:64px;min-height:64px}.aud-play,.aud-kebab {min-width:52px;min-height:52px}.aud-menu {background:var(--pocket-surface)!important;color:var(--pocket-ink)!important;border-color:var(--pocket-line)!important}.aud-menu-item {min-height:56px;font-size:18px!important}.aud-modal-overlay {z-index:11000}.aud-timer,.aud-name-text {font-size:20px!important;color:var(--pocket-ink)!important}.acct-tab-bar {overflow-x:auto;min-height:64px;border-color:var(--pocket-line)!important;background:var(--pocket-surface)!important}.acct-tab-btn {min-width:110px;font-size:18px!important;color:var(--pocket-muted)!important}.acct-tab-btn.active {color:var(--pocket-accent)!important;border-color:var(--pocket-accent)!important}.status-section-body {overflow:auto}.status-motor-row,.status-motor-header {min-width:640px;font-size:17px!important;line-height:1.5}.status-bar-track {background:var(--pocket-soft)!important}.status-bar-fill {background:var(--pocket-accent)!important}.errors-empty {font-size:20px;color:var(--pocket-muted)}
 /* Landscape driving: edge-to-edge camera, no app tabs, familiar themed chrome. */
-body[data-screen=control] #app {height:100dvh!important;padding:0!important}
+body[data-screen=control] #app {height:var(--pocket-viewport-height)!important;padding:0!important}
 body[data-screen=control] .pocket-tabbar,body[data-screen=control] .pocket-preview-banner {display:none!important}
 .control-screen {position:relative;overflow:hidden;--drive-stop-size:64px;--drive-controls-gap:12px;--drive-right-inset:max(24px,env(safe-area-inset-right))}.control-overlay {height:100%;overflow:hidden}
 .control-screen .video-bg-fullscreen {object-fit:contain;object-position:center;background:var(--pocket-bg)}
